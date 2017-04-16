@@ -211,8 +211,8 @@ kube::multinode::start_k8s_master() {
     gcr.io/google_containers/hyperkube-${ARCH}:${K8S_VERSION} \
     /hyperkube kubelet \
       --allow-privileged \
-      --api-servers=http://localhost:8080 \
-      --config=/etc/kubernetes/manifests-multi \
+      --require-kubeconfig \
+      --pod-manifest-path=/etc/kubernetes/manifests-multi \
       --cluster-dns=10.0.0.10 \
       --cluster-domain=cluster.local \
       ${CNI_ARGS} \
